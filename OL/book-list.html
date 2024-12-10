@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List - Pahina Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 70%;
+            max-width: 400px;
+            margin-right: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #005bb5;
+        }
+
+        h2 {
+            background-color: #0084ff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        .go-back-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .go-back-btn:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Pahina Library - Book List</h1>
+        <p>Explore our collection of books.</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search books..." onkeyup="searchBooks()">
+        <button onclick="searchBooks()">Search</button>
+    </div>
+
+    <!-- Fiction Category -->
+    <h2>Fiction</h2>
+    <table id="fictionTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Publication Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="fictionBooks">
+            <!-- Books will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <!-- Non-Fiction Category -->
+    <h2>Non-Fiction</h2>
+    <table id="nonFictionTable">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publisher</th>
+                <th>Publication Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody id="nonFictionBooks">
+            <!-- Books will be dynamically inserted here -->
+        </tbody>
+    </table>
+
+    <!-- Go Back Button -->
+    <a href="index.html" class="go-back-btn">Go Back to Home</a>
+
+    <script>
+        const books = [
+            { title: "The Night Circus", author: "Erin Morgenstern", publisher: "Doubleday", publicationDate: "September 13, 2011", description: "A mesmerizing tale of a magical circus that appears without warning, with two young magicians competing in a game of love and power.", category: "Fiction" },
+            { title: "Where the Crawdads Sing", author: "Delia Owens", publisher: "G.P. Putnam's Sons", publicationDate: "August 14, 2018", description: "A blend of mystery and coming-of-age story set in the marshlands of North Carolina.", category: "Fiction" },
+            { title: "Educated: A Memoir", author: "Tara Westover", publisher: "Random House", publicationDate: "February 20, 2018", description: "The inspiring true story of a woman who grew up without formal education and eventually earned a PhD from Cambridge University.", category: "Non-Fiction" },
+            { title: "Atomic Habits", author: "James Clear", publisher: "Avery", publicationDate: "October 16, 2018", description: "A practical guide to forming good habits, breaking bad ones, and mastering the tiny behaviors that lead to remarkable results.", category: "Non-Fiction" }
+        ];
+
+        function displayBooks() {
+            let fictionBooks = document.getElementById('fictionBooks');
+            let nonFictionBooks = document.getElementById('nonFictionBooks');
+            
+            books.forEach(book => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td>${book.publisher}</td>
+                    <td>${book.publicationDate}</td>
+                    <td>${book.description}</td>
+                `;
+
+                if (book.category === "Fiction") {
+                    fictionBooks.appendChild(row);
+                } else {
+                    nonFictionBooks.appendChild(row);
+                }
+            });
+        }
+
+        function searchBooks() {
+            let input = document.getElementById("searchInput").value.toUpperCase();
+            let tables = document.querySelectorAll("table");
+            tables.forEach(function(table) {
+                let rows = table.querySelectorAll("tbody tr");
+                rows.forEach(function(row) {
+                    let cells = row.querySelectorAll("td");
+                    let found = false;
+                    cells.forEach(function(cell) {
+                        if (cell.textContent.toUpperCase().includes(input)) {
+                            found = true;
+                        }
+                    });
+                    if (found) {
+                        row.style.display = "";
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+            });
+        }
+
+        // Call the function to display books on page load
+        window.onload = displayBooks;
+    </script>
+</body>
+</html>
