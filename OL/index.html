@@ -11,62 +11,95 @@
             font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            display: flex;
         }
 
-        /* Header Styles */
-        .header {
+        /* Side Navigation Styles */
+        .side-nav {
+            width: 250px;
             background-color: #333;
             color: white;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hidden by default */
+            padding-top: 20px;
+            overflow-x: hidden;
+            transition: left 0.3s ease-in-out;
+        }
+
+        .side-nav.open {
+            left: 0;
+        }
+
+        .side-nav .logo {
+            display: block;
+            margin: 0 auto;
+            width: 80px;
+            height: 80px;
+        }
+
+        .side-nav h2 {
             text-align: center;
-            padding: 20px;
-            position: relative;
+            margin: 20px 0;
+            font-size: 18px;
         }
 
-        /* Logo Styles */
-        .logo {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 150px;
-        }
-
-        /* Navigation Bar Styles */
-        .nav-bar {
-            margin-top: 10px;
-        }
-
-        .nav-bar ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .nav-bar li {
-            display: inline;
-        }
-
-        .nav-bar a {
+        .side-nav a {
             color: white;
             text-decoration: none;
-            font-size: 18px;
-            padding: 10px 20px;
-            transition: background-color 0.3s;
+            padding: 15px 20px;
+            display: block;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
         }
 
-        .nav-bar a:hover {
-            background-color: #0084ff;
+        .side-nav a:hover {
+            background-color: #575757;
         }
 
-        /* Slider Styles */
+        /* Main Content Styles */
+        .main-content {
+            margin-left: 0;
+            flex-grow: 1;
+            padding: 20px;
+            transition: margin-left 0.3s ease-in-out;
+        }
+
+        .main-content.shifted {
+            margin-left: 250px;
+        }
+
+        /* Toggle Button */
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .toggle-btn.open {
+            left: 270px; /* Moves with the side-nav */
+            transition: left 0.3s ease-in-out;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Slider */
         .slider {
             position: relative;
-            width: 100%;
             max-width: 100%;
-            height: 400px;
+            height: 300px;
             overflow: hidden;
             margin-bottom: 20px;
         }
@@ -78,140 +111,224 @@
 
         .slides img {
             width: 100%;
-            height: 400px;
+            height: 300px;
             object-fit: cover;
         }
 
-        .slider-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-
-        .prev, .next {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 15px;
-            cursor: pointer;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        /* View All Books Link */
-        .view-books-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .view-books-link a {
-            font-size: 20px;
-            text-decoration: none;
-            color: #0084ff;
-        }
-
-        /* Footer Styles */
-        .footer {
-            background-color: #333;
-            color: white;
+        /* Book Categories */
+        .categories {
             text-align: center;
             padding: 20px;
-            position: fixed;
-            bottom: 0;
+        }
+
+        .categories h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .category-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .category-item {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .category-item:hover {
+            background-color: #0084ff;
+            transform: scale(1.1);
+        }
+
+        /* Top Picks Section */
+        .top-picks {
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .top-picks h2 {
+            margin-bottom: 20px;
+        }
+
+        .book-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .book-item {
+            width: 150px;
+            text-align: center;
+        }
+
+        .book-item img {
             width: 100%;
+            border-radius: 5px;
+        }
+
+        .book-item p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-top: 20px;
         }
 
         /* Responsive Styles */
         @media (max-width: 768px) {
-            .slider {
-                height: 300px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 24px;
+            .side-nav {
+                width: 200px;
             }
 
-            .header p {
-                font-size: 14px;
+            .side-nav.open {
+                left: 0;
+            }
+
+            .main-content.shifted {
+                margin-left: 200px;
+            }
+
+            .toggle-btn.open {
+                left: 220px;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Header Section -->
-    <div class="header">
-        <!-- Logo -->
+    <!-- Side Navigation -->
+    <div class="side-nav" id="sideNav">
         <img src="images/logo.png" alt="Pahina Library Logo" class="logo">
-        <h1>Pahina Library</h1>
-        <p>Explore our collection of books. Search by category, author, title, or publication date.</p>
-
-        <!-- Navigation Bar -->
-        <div class="nav-bar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="book-list.html">Books</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
+        <h2>Pahina Library</h2>
+        <a href="index.html">Home</a>
+        <a href="book-list.html">Books</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="#description">About Pahina</a>
+        <a href="#video">Video</a>
     </div>
 
-    <!-- Slider -->
-    <div class="slider">
-        <div class="slides">
-            <img src="images/slider1.jpg" alt="Slide 1">
-            <img src="images/library.png" alt="Slide 3">
-            <img src="images/slider2.jpg" alt="Slide 2">
-            <img src="images/library.png" alt="Slide 3">
-            <img src="images/slider3.jpg" alt="Slide 3">
-              <img src="images/library.png" alt="Slide 3">
-                <img src="images/slider3.jpg" alt="Slide 3">
-              <img src="images/library.png" alt="Slide 3">
-        </div>
-        <div class="slider-controls">
-            <span class="prev" onclick="prevSlide()">&#10094;</span>
-            <span class="next" onclick="nextSlide()">&#10095;</span>
-        </div>
-    </div>
+    <!-- Toggle Button -->
+    <button class="toggle-btn" id="toggleBtn" onclick="toggleNav()">☰</button>
 
-    <!-- Link to Book List -->
-    <div class="view-books-link">
-        <a href="book-list.html">View All Books</a>
-    </div>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <div class="header">
+            <h1>Welcome to Pahina Library</h1>
+            <p>Explore our vast collection of books at your fingertips.</p>
+        </div>
 
-    <!-- Footer Section -->
-    <div class="footer">
-        <p>&copy; 2024 Pahina Library. All Rights Reserved.</p>
+        <!-- Slider -->
+        <div class="slider">
+            <div class="slides">
+                <img src="images/slider1.jpg" alt="Slider 1">
+                <img src="images/slider2.jpg" alt="Slider 2">
+                <img src="images/slider3.jpg" alt="Slider 3">
+            </div>
+        </div>
+
+        <div class="categories">
+            <h2>Explore Book Categories</h2>
+            <div class="category-list">
+                <a href="book-list.html" class="category-item">Fiction</a>
+                <a href="book-list.html" class="category-item">Non-Fiction</a>
+                <a href="book-list.html" class="category-item">Science</a>
+                <a href="book-list.html" class="category-item">History</a>
+                <a href="book-list.html" class="category-item">Children's Books</a>
+                <a href="book-list.html" class="category-item">Mystery & Thriller</a>
+            </div>
+        </div>
+        <!-- Top Picks -->
+        <div class="top-picks">
+            <h2>Top Picks for You</h2>
+            <div class="book-grid">
+                <div class="book-item">
+                    <img src="images/book1.jpg" alt="Book 1">
+                    <p>The Great Gatsby</p>
+                </div>
+                <div class="book-item">
+                    <img src="images/book2.jpg" alt="Book 2">
+                    <p>1984 by George Orwell</p>
+                </div>
+                <div class="book-item">
+                    <img src="images/book3.jpg" alt="Book 3">
+                    <p>To Kill a Mockingbird</p>
+                </div>
+                <div class="book-item">
+                    <img src="images/book4.jpg" alt="Book 4">
+                    <p>Harry Potter Series</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div id="description">
+            <h2>About Pahina Library</h2>
+            <p>
+                Pahina Library is a digital gateway to a world of books and knowledge. We aim to provide readers with an organized, 
+                user-friendly platform for exploring various genres and authors. Join us in celebrating the love of reading and discovery.
+            </p>
+        </div>
+
+        <!-- Video Section -->
+       <!-- Video Section -->
+<div id="video">
+    <h2>Discover More About Pahina Library</h2>
+    <iframe src="https://www.youtube.com/embed/ZNSA0NrDeb4" allowfullscreen></iframe>
+</div>
+
+<style>
+    /* Video Section */
+    #video {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    #video h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    iframe {
+        width: 80%;   /* Increased width */
+        height: 450px;  /* Increased height */
+        border: none;
+        display: block;
+        margin: 0 auto; /* Centers the iframe */
+    }
+</style>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Pahina Library. All Rights Reserved.</p>
+        </div>
     </div>
 
     <script>
-        // Slider functionality
-        let currentSlide = 0;
+        // Function to toggle side navigation
+        function toggleNav() {
+            const sideNav = document.getElementById('sideNav');
+            const mainContent = document.getElementById('mainContent');
+            const toggleBtn = document.getElementById('toggleBtn');
 
-        function nextSlide() {
-            const slides = document.querySelector('.slides');
-            const totalSlides = slides.children.length;
-            currentSlide = (currentSlide + 1) % totalSlides;
-            slides.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
+            const isOpen = sideNav.classList.toggle('open');
+            mainContent.classList.toggle('shifted', isOpen);
+            toggleBtn.classList.toggle('open', isOpen);
         }
-
-        function prevSlide() {
-            const slides = document.querySelector('.slides');
-            const totalSlides = slides.children.length;
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            slides.style.transform = 'translateX(' + (-currentSlide * 100) + '%)';
-        }
-
-        // Auto-play the slider every 3 seconds
-        setInterval(nextSlide, 3000);
     </script>
-
 </body>
 </html>
