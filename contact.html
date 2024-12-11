@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patricia Juliene Tolentino | Creative Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #0084ff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover {
+            color: #f4f4f4;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        /* Who I Am Section */
+        .who-i-am {
+            background-color: #fff;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .who-i-am h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .who-i-am p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .portfolio-item h3 {
+            background-color: #333;
+            color: white;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .portfolio-item p {
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background-color: #0084ff;
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .skills-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .skills-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .skills-list .skill {
+            background-color: #333;
+            color: white;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #f4f4f4;
+            padding: 50px 20px;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            background-color: #0084ff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #005bb5;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Bottom Logo Button */
+        .logo-btn-bottom {
+            background-color: #0084ff;
+            color: white;
+            padding: 10px 30px;
+            font-size: 1.8rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            display: block;
+            width: fit-content;
+            margin: 40px auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Patricia Juliene Tolentino</h1>
+        <p>Creative Portfolio</p>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#who-i-am">Who I Am</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Who I Am Section -->
+        <section id="who-i-am" class="who-i-am">
+            <h2>Who I Am</h2>
+            <p>Hello! I’m Patricia Juliene Tolentino, a passionate graphic designer and IT professional with a Bachelor's degree in Information Technology. With years of experience in designing visually compelling content and providing technical support, I aim to bring creativity, precision, and technical expertise to every project. I believe that design is more than just aesthetics; it’s about solving problems and communicating ideas clearly and effectively.</p>
+            <p>My approach is to focus on understanding the project goals, audience, and message before diving into the design process. I enjoy collaborating with clients to ensure that every design is not only visually appealing but also meaningful and functional.</p>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <div class="portfolio-section">
+                <!-- First Project -->
+                <div class="portfolio-item">
+                    <img src="images/sap.png" alt="Sining at Pangarap">
+                    <h3>Sining at Pangarap Facebook Page</h3>
+                    <p>For the Sining at Pangarap Facebook page, I created a visually engaging and cohesive design to highlight the group's events, artistic showcases, and community efforts. By aligning the page’s visual identity with the values of creativity and hope, I helped the page stand out and attract a broader audience.</p>
+                </div>
+                <!-- Second Project -->
+                <div class="portfolio-item">
+                    <img src="images/library.png" alt="Pahina Library">
+                    <h3>Pahina Library</h3>
+                    <p>For Pahina Library, I designed digital and print materials to promote reading and community engagement. I created posters, banners, and social media content that reflected the library’s mission to inspire and educate the local community through the love of books.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <h2>Key Skills</h2>
+            <div class="skills-list">
+                <div class="skill">Graphic Design (Photoshop, Illustrator, InDesign)</div>
+                <div class="skill">IT Support & Troubleshooting</div>
+                <div class="skill">Social Media Management</div>
+                <div class="skill">Programming (Java, PHP, HTML, Visual Basic, C++)</div>
+                <div class="skill">Creative Concept Development</div>
+                <div class="skill">Attention to Detail</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2>Get in Touch</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <p>Email: patriciajulienetolentino@gmail.com</p>
+            <p>Phone: +639152875436</p>
+            <p>Facebook: <a href="https://www.facebook.com/SiningAtPangarap" target="_blank">Sining at Pangarap Facebook</a></p>
+        </section>
+    </div>
+
+    <!-- Logo Button at the Bottom -->
+    <a href="index.html" class="logo-btn-bottom">Back to Homepage</a>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Patricia Juliene Tolentino. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
